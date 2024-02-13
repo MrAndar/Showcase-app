@@ -1,6 +1,9 @@
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
+
+st.title("My showcase App")
 
 col1, col2 = st.columns(2)
 
@@ -16,3 +19,19 @@ with col2:
     """
     st.write(content)
 
+content2 = """
+Below are some apps I created using python, I have also shared the source code.
+"""
+st.info(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv")
+
+with col3:
+    for index, row in df[:2].iterrows():
+        st.header(row["title"])
+
+with col4:
+    for index, row in df[2:].iterrows():
+        st.header(row["title"])
